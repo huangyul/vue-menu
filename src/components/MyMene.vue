@@ -34,7 +34,13 @@
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
-    <mini-menu id="mini-menu" class="mini-menu" v-show="isShow"></mini-menu>
+    <mini-menu
+      id="mini-menu"
+      class="mini-menu"
+      v-show="isShow"
+      @mouseover.native="onMenuMouseover"
+      @mouseleave.native="onMouseleave"
+    ></mini-menu>
   </div>
 </template>
 
@@ -56,6 +62,10 @@
         const mini = document.getElementById('mini-menu')
         mini.style.top = this.getElementTop(o) + 'px'
         mini.style.left = this.getElementLeft(o) + 200 + 'px'
+        this.isShow = true
+      },
+
+      onMenuMouseover() {
         this.isShow = true
       },
 
