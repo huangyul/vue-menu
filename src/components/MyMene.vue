@@ -34,13 +34,15 @@
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
-    <mini-menu
-      id="mini-menu"
-      class="mini-menu"
-      v-show="isShow"
-      @mouseover.native="onMenuMouseover"
-      @mouseleave.native="onMouseleave"
-    ></mini-menu>
+    <transition name="fade">
+      <mini-menu
+        id="mini-menu"
+        class="mini-menu"
+        v-show="isShow"
+        @mouseover.native="onMenuMouseover"
+        @mouseleave.native="onMouseleave"
+      ></mini-menu>
+    </transition>
   </div>
 </template>
 
@@ -103,5 +105,14 @@
     position: absolute;
     top: 0;
     left: 500px;
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all 0.4s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
   }
 </style>
